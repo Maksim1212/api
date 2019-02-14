@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources\Car;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+//use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\Resource;
 
-class CarCollection extends ResourceCollection
+class CarCollection extends Resource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +15,13 @@ class CarCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'condition' => $this->condition,
+            'href'=>[
+                'link' => route('cars.show',$this->id)
+            ]
+
+        ];
     }
 }

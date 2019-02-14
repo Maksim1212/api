@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Car\CarCollection;
 use App\Http\Resources\Car\CarResource;
 use App\Model\Car;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        return Car::all();
+        return CarCollection::collection(Car::all());
     }
 
     /**
