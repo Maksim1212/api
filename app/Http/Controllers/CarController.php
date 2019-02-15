@@ -107,6 +107,8 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        $car->delete();
+
+        return response(null,Response::HTTP_NO_CONTENT);
     }
 }
