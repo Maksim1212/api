@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CarNotBelongsToUser;
 use App\Http\Requests\CarRequest;
 use App\Http\Resources\Car\CarCollection;
 use App\Http\Resources\Car\CarResource;
 use App\Model\Car;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+
 
 class CarController extends Controller
 {
@@ -92,6 +95,9 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $this->CarUserCheck($car);
+        $request['detail'] = $request->description;
+        unset($request['description']);
         $car->update($request->all());
 
         return response([
@@ -110,5 +116,12 @@ class CarController extends Controller
         $car->delete();
 
         return response(null,Response::HTTP_NO_CONTENT);
+    }
+
+    public function CarUserCheck($car)
+    {
+        if(Auth::id() !== $car->user_id){
+            throw new CarNotBelongsToUser;
+        }
     }
 }
