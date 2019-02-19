@@ -8,6 +8,6 @@ class CarNotBelongsToUser extends Exception
 {
     public function render()
     {
-        return ['errors'=>'Car not belongs to user'];
+        return ['errors' => 'Car not belongs to user'];
     }
 }

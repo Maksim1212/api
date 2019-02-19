@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exceptions;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -7,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 trait ExceptionTrait
 {
-    public function apiException($request,$e)
+    public function apiException($request, $e)
     {
         if ($this->isModel($e)) {
             return $this->ModelResponse($e);
@@ -35,13 +36,13 @@ trait ExceptionTrait
     {
         return response()->json([
             'errors' => 'Car Model not found'
-        ],Response::HTTP_NOT_FOUND);
+        ], Response::HTTP_NOT_FOUND);
     }
 
     protected function HttpResponse($e)
     {
         return response()->json([
             'errors' => 'Incorect route'
-        ],Response::HTTP_NOT_FOUND);
+        ], Response::HTTP_NOT_FOUND);
     }
 }

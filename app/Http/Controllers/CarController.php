@@ -22,7 +22,7 @@ class CarController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index','show');
+        $this->middleware('auth:api')->except('index', 'show');
     }
 
     public function index()
@@ -43,31 +43,31 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CarRequest $request)
     {
-            $car = new Car;
-            $car->name = $request->name;
-            $car->yearOfissue = $request->yearOfissue;
-            $car->free = $request->free;
-            $car->state = $request->state;
-            $car->start_route_at = $request->start_route_at;
-            $car->finish_route_at = $request->finish_route_at;
-            $car->start_repairs_at = $request->start_repairs_at;
-            $car->finish_repairs_at = $request->finish_repairs_at;
-            $car->save();
+        $car = new Car;
+        $car->name = $request->name;
+        $car->yearOfissue = $request->yearOfissue;
+        $car->free = $request->free;
+        $car->state = $request->state;
+        $car->start_route_at = $request->start_route_at;
+        $car->finish_route_at = $request->finish_route_at;
+        $car->start_repairs_at = $request->start_repairs_at;
+        $car->finish_repairs_at = $request->finish_repairs_at;
+        $car->save();
 
-            return response([
-                'data' => new CarResource($car)
-            ],Response::HTTP_CREATED);
+        return response([
+            'data' => new CarResource($car)
+        ], Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Car  $car
+     * @param  \App\Model\Car $car
      * @return \Illuminate\Http\Response
      */
     public function show(Car $car)
@@ -78,7 +78,7 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Car  $car
+     * @param  \App\Model\Car $car
      * @return \Illuminate\Http\Response
      */
     public function edit(Car $car)
@@ -89,8 +89,8 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Car  $car
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Model\Car $car
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Car $car)
@@ -102,25 +102,25 @@ class CarController extends Controller
 
         return response([
             'data' => new CarResource($car)
-        ],Response::HTTP_CREATED);
+        ], Response::HTTP_CREATED);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Car  $car
+     * @param  \App\Model\Car $car
      * @return \Illuminate\Http\Response
      */
     public function destroy(Car $car)
     {
         $car->delete();
 
-        return response(null,Response::HTTP_NO_CONTENT);
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 
     public function CarUserCheck($car)
     {
-        if(Auth::id() !== $car->user_id){
+        if (Auth::id() !== $car->user_id) {
             throw new CarNotBelongsToUser;
         }
     }

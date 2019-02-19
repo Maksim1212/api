@@ -10,7 +10,7 @@ class CarCollection extends Resource
     /**
      * Transform the resource collection into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -18,8 +18,8 @@ class CarCollection extends Resource
         return [
             'name' => $this->name,
             'condition' => $this->condition,
-            'href'=>[
-                'link' => route('cars.show',$this->id)
+            'href' => [
+                'link' => route('cars.show', $this->id)
             ]
 
         ];
