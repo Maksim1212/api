@@ -50,9 +50,9 @@ class CarController extends Controller
     {
             $car = new Car;
             $car->name = $request->name;
-            $car->age = $request->age;
+            $car->yearOfissue = $request->yearOfissue;
             $car->free = $request->free;
-            $car->condition = $request->condition;
+            $car->state = $request->state;
             $car->start_route_at = $request->start_route_at;
             $car->finish_route_at = $request->finish_route_at;
             $car->start_repairs_at = $request->start_repairs_at;

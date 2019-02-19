@@ -17,8 +17,8 @@ class CreateCarsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
-            $table->string('condition');
-            $table->integer('age');
+            $table->string('state');
+            $table->integer('yearOfissue');
             $table->string('free');
             $table->timestamp('start_route_at')->nullable();
             $table->timestamp('finish_route_at')->nullable();

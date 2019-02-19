@@ -6,8 +6,8 @@ $factory->define(App\Model\Car::class, function (Faker $faker) {
     return [
 
         'name' => $faker->word,
-        'condition' => $faker->word,
-        'age' => $faker->numberBetween(1,100),
+        'state' => $faker->word,
+        'yearOfissue' => $faker->year($max = 'now'),
         'free' => $faker->word,
         'start_route_at' => $faker->dateTime($max = 'now', $timezone = null),
         'finish_route_at' => $faker->dateTime($max = 'now', $timezone = null),

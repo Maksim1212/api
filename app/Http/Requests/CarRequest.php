@@ -25,9 +25,9 @@ class CarRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'age' => 'required|max:2',
+            'yearOfissue' => 'required|max:5',
             'free' => 'required|max:20',
-            'condition' => 'required|max:50',
+            'state' => 'required|max:50',
             'start_route_at' => 'required',
             'finish_route_at' => 'required',
             'start_repairs_at' => 'required',
